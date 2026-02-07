@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StudySprint | Plantillas para estudiar mejor (sin apps raras)</title>
+  <meta name="description" content="Plantillas + checklists para estudiar más rápido, organizarte y mejorar notas. Descarga inmediata. Legal, simple y útil." />
+  <meta property="og:title" content="StudySprint | Plantillas para estudiar mejor" />
+  <meta property="og:description" content="Pack digital de plantillas + método simple para organizarte y rendir más. Descarga inmediata." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root{
+      --bg:#070a0f; --bg2:#0b1220; --card:#0f1930cc;
+      --text:#eaf0ff; --muted:#a9b6d6; --line:#223153;
+      --accent:#5eead4; --accent2:#a78bfa;
+      --radius:18px; --radius2:26px; --max:1100px;
+      --shadow:0 18px 45px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 0%, rgba(94,234,212,.12), transparent 60%),
+        radial-gradient(900px 600px at 80% 10%, rgba(167,139,250,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max), calc(100% - 32px)); margin:0 auto}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(7,10,15,.86), rgba(7,10,15,.58));
+      border-bottom: 1px solid rgba(34,49,83,.45);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .logo{
+      width:40px;height:40px;border-radius:14px;
+      background: radial-gradient(circle at 30% 30%, var(--accent), transparent 55%),
+                  radial-gradient(circle at 70% 70%, var(--accent2), transparent 55%),
+                  linear-gradient(135deg, #0d1630, #0a1020);
+      border:1px solid rgba(94,234,212,.25);
+      box-shadow: var(--shadow);
+    }
+    .brand small{display:block;color:var(--muted);font-weight:600;margin-top:-2px}
+    .navlinks{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end;font-size:14px;color:var(--muted)}
+    .navlinks a{padding:8px 10px;border-radius:12px;border:1px solid transparent}
+    .navlinks a:hover{border-color:rgba(94,234,212,.22);background:rgba(15,25,48,.35);color:var(--text)}
+
+    .hero{padding:52px 0 18px}
+    .hero-grid{display:grid;grid-template-columns: 1.1fr .9fr;gap:22px;align-items:stretch}
+    .panel{
+      background: linear-gradient(180deg, rgba(15,25,48,.55), rgba(15,25,48,.28));
+      border: 1px solid rgba(34,49,83,.55);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-main{padding:26px;display:flex;flex-direction:column;gap:14px}
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(94,234,212,.22);
+      background:rgba(15,25,48,.35);
+      color:var(--muted);font-size:13px;width:fit-content
+    }
+    h1{font-size:clamp(30px, 4.2vw, 46px);line-height:1.08;margin:0;letter-spacing:-.4px}
+    .lead{margin:0;color:var(--muted);font-size:clamp(15px, 1.6vw, 18px)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 14px;border-radius:16px;
+      border:1px solid rgba(34,49,83,.65);
+      background:rgba(15,25,48,.42);
+      font-weight:750;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(94,234,212,.35);background:rgba(15,25,48,.55)}
+    .btn.primary{
+      border-color:rgba(94,234,212,.38);
+      background: linear-gradient(135deg, rgba(94,234,212,.18), rgba(167,139,250,.14));
+    }
+    .stats{display:grid;grid-template-columns: repeat(3, 1fr);gap:10px;margin-top:6px}
+    .stat{padding:12px;border-radius:16px;border:1px solid rgba(34,49,83,.55);background:rgba(15,25,48,.26)}
+    .stat b{display:block;font-size:16px}
+    .stat span{color:var(--muted);font-size:12.5px}
+
+    .mock{
+      min-height: 100%;
+      display:grid;
+      grid-template-rows: 1fr auto;
+    }
+    .mock-top{padding:18px;border-bottom:1px solid rgba(34,49,83,.55)}
+    .mock-card{
+      border-radius:18px;
+      border:1px solid rgba(34,49,83,.55);
+      background:rgba(15,25,48,.25);
+      padding:14px;
+    }
+    .mock-card h3{margin:0 0 6px;font-size:16px}
+    .mock-card p{margin:0;color:var(--muted);font-size:14px}
+    .mock-list{margin:10px 0 0 18px;color:var(--muted);font-size:14px}
+    .mock-bottom{padding:14px 16px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,49,83,.6);background:rgba(15,25,48,.22)}
+    main{padding:18px 0 80px}
+    .section{
+      margin-top:18px;
+      background:rgba(15,25,48,.24);
+      border:1px solid rgba(34,49,83,.55);
+      border-radius:var(--radius2);
+      box-shadow:0 10px 30px rgba(0,0,0,.22);
+      padding:18px;
+    }
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    .section-head h2{margin:0;font-size:20px;letter-spacing:-.2px}
+    .section-head p{margin:0;color:var(--muted);font-size:13.5px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .col-4{grid-column:span 4}
+    .col-6{grid-column:span 6}
+    .col-12{grid-column:span 12}
+    .card{background:rgba(15,25,48,.28);border:1px solid rgba(34,49,83,.55);border-radius:var(--radius);padding:14px}
+    .card h3{margin:0 0 6px;font-size:16px}
+    .card p,.card li{color:var(--muted);font-size:14px;margin:0}
+    .card ul{margin:8px 0 0 18px;padding:0}
+    .price{
+      display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+      padding:12px;border-radius:16px;border:1px solid rgba(34,49,83,.55);background:rgba(15,25,48,.25);
+      margin-top:10px;
+    }
+    .price b{font-size:18px}
+    .hint{color:var(--muted);font-size:13px}
+    details{border:1px solid rgba(34,49,83,.55);background:rgba(15,25,48,.22);border-radius:16px;padding:12px}
+    details + details{margin-top:10px}
+    summary{cursor:pointer;font-weight:750;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details p{margin:8px 0 0;color:var(--muted)}
+    footer{padding:26px 0 30px;border-top:1px solid rgba(34,49,83,.45);color:var(--muted);font-size:13px}
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+      .col-4,.col-6{grid-column:span 12}
+    }
+    @media (max-width: 520px){
+      .navlinks{display:none}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Inicio">
+        <div class="logo" aria-hidden="true"></div>
+        <div>StudySprint <small>Plantillas para estudiar mejor</small></div>
+      </a>
+      <nav class="navlinks" aria-label="Navegación">
+        <a href="#pack">El pack</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#afiliados">Recomendaciones</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section id="top" class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="panel">
+        <div class="hero-main">
+          <div class="pill">⚡ Descarga inmediata • 📚 Sin apps raras • ✅ Legal</div>
+          <h1>Estudia más rápido con un sistema simple: plantillas + checklist + plan semanal.</h1>
+          <p class="lead">
+            Un pack digital listo para usar (PDF + Notion/Docs) para organizarte en 10 minutos:
+            <b>qué estudiar</b>, <b>cuándo</b> y <b>cómo repasar</b> sin agobio.
+          </p>
+
+          <div class="cta-row">
+            <!-- CAMBIA ESTE LINK por tu pago (Stripe/Gumroad) -->
+            <a class="btn primary" href="https://TU-LINK-DE-PAGO-AQUI.com" target="_blank" rel="noreferrer">
+              🛒 Comprar el pack
+            </a>
+            <a class="btn" href="#pack">📦 Ver qué incluye</a>
+            <a class="btn" href="#como">👀 Cómo funciona</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><b>10 min</b><span>para montarlo y empezar</span></div>
+            <div class="stat"><b>3 plantillas</b><span>plan, repaso, checklist</span></div>
+            <div class="stat"><b>Actualizaciones</b><span>mejoras gratis</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel mock">
+        <div class="mock-top">
+          <div class="mock-card">
+            <h3>Vista previa del pack</h3>
+            <p>Incluye formatos para móvil y PC.</p>
+            <ul class="mock-list">
+              <li>Plan semanal “bloques” (30–60 min)</li>
+              <li>Checklist de estudio (inicio → repaso)</li>
+              <li>Plantilla de resúmenes + preguntas</li>
+            </ul>
+
+            <div class="price">
+              <div>
+                <div class="hint">Precio de lanzamiento</div>
+                <b>9,90 €</b>
+              </div>
+              <!-- CAMBIA ESTE LINK por tu pago (Stripe/Gumroad) -->
+              <a class="btn primary" href="https://TU-LINK-DE-PAGO-AQUI.com" target="_blank" rel="noreferrer">Comprar</a>
+            </div>
+          </div>
+        </div>
+        <div class="mock-bottom">
+          <span class="badge">🔒 Pago seguro</span>
+          <span class="badge">📩 Envío por email</span>
+          <span class="badge">📥 Descarga instantánea</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section id="pack" class="section">
+    <div class="section-head">
+      <h2>📦 Qué incluye el pack</h2>
+      <p>Hecho para que lo uses hoy, no “algún día”.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card col-4">
+        <h3>1) Plan semanal</h3>
+        <p>Organiza asignaturas por bloques y prioriza lo que más sube nota.</p>
+        <ul>
+          <li>Horarios realistas</li>
+          <li>Bloques de 30–60 min</li>
+          <li>Huecos de repaso</li>
+        </ul>
+      </div>
+
+      <div class="card col-4">
+        <h3>2) Checklist de estudio</h3>
+        <p>Evita “estudiar sin rumbo”: sabes exactamente qué toca hacer.</p>
+        <ul>
+          <li>Antes / durante / después</li>
+          <li>Evita errores típicos</li>
+          <li>Mejora constancia</li>
+        </ul>
+      </div>
+
+      <div class="card col-4">
+        <h3>3) Plantilla de repaso</h3>
+        <p>Convierte apuntes en preguntas y te obliga a recordar (lo que funciona).</p>
+        <ul>
+          <li>Preguntas guiadas</li>
+          <li>Auto-test rápido</li>
+          <li>Seguimiento de fallos</li>
+        </ul>
+      </div>
+
+      <div class="card col-12">
+        <div class="price">
+          <div>
+            <div class="hint">Pack completo (descarga inmediata)</div>
+            <b>9,90 €</b>
+          </div>
+          <!-- CAMBIA ESTE LINK por tu pago (Stripe/Gumroad) -->
+          <a class="btn primary" href="https://TU-LINK-DE-PAGO-AQUI.com" target="_blank" rel="noreferrer">🛒 Comprar ahora</a>
+        </div>
+        <p class="hint" style="margin-top:10px">
+          *Este es un producto digital informativo (no garantiza resultados). Mejora tus probabilidades si lo aplicas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="como" class="section">
+    <div class="section-head">
+      <h2>⚙️ Cómo funciona</h2>
+      <p>3 pasos. Sin historias.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card col-4">
+        <h3>Paso 1: Compra</h3>
+        <p>Pagas de forma segura (Stripe/Gumroad).</p>
+      </div>
+      <div class="card col-4">
+        <h3>Paso 2: Recibes el pack</h3>
+        <p>Te llega por email y/o descarga instantánea.</p>
+      </div>
+      <div class="card col-4">
+        <h3>Paso 3: Lo aplicas hoy</h3>
+        <p>Montas tu semana en 10 minutos y empiezas con el primer bloque.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="afiliados" class="section">
+    <div class="section-head">
+      <h2>🛍️ Recomendaciones (afiliados)</h2>
+      <p>Enlaces opcionales; si compras, me llevo una comisión (sin coste extra para ti).</p>
+    </div>
+
+    <div class="grid">
+      <div class="card col-6">
+        <h3>Temporizador (Pomodoro)</h3>
+        <p>Ayuda a mantener foco real. Ideal para bloques de 25–50 min.</p>
+        <p style="margin-top:10px">
+          <a class="btn" href="https://TU-LINK-AFILIADO-AQUI.com" target="_blank" rel="noreferrer">Ver recomendación</a>
+        </p>
+      </div>
+      <div class="card col-6">
+        <h3>Lámpara / luz de escritorio</h3>
+        <p>Menos fatiga y más constancia. Especialmente de noche.</p>
+        <p style="margin-top:10px">
+          <a class="btn" href="https://TU-LINK-AFILIADO-AQUI.com" target="_blank" rel="noreferrer">Ver recomendación</a>
+        </p>
+      </div>
+      <div class="card col-12">
+        <p class="hint">
+          Aviso: como afiliado puedo recibir comisión por compras cualificadas. Transparencia total.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="section-head">
+      <h2>❓ Preguntas frecuentes</h2>
+      <p>Lo típico que te preguntarían antes de comprar.</p>
+    </div>
+
+    <details>
+      <summary>¿Qué recibo exactamente?</summary>
+      <p>Un pack digital (PDF + enlace a versión en Notion/Docs) con plantillas y guía rápida de uso.</p>
+    </details>
+    <details>
+      <summary>¿Sirve para cualquier curso/edad?</summary>
+      <p>Sí. Está pensado como sistema general. Lo ajustas a tus asignaturas y tiempo disponible.</p>
+    </details>
+    <details>
+      <summary>¿Hay devoluciones?</summary>
+      <p>En productos digitales suele depender de la plataforma. Si usas Gumroad/Stripe, puedes definir tu política en la página de pago.</p>
+    </details>
+  </section>
+
+  <section class="section" aria-label="CTA final">
+    <div class="section-head">
+      <h2>✅ Listo. Si quieres orden, este pack te lo deja fácil.</h2>
+      <p>Compra → descarga → plan semanal en 10 minutos.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn primary" href="https://TU-LINK-DE-PAGO-AQUI.com" target="_blank" rel="noreferrer">🛒 Comprar el pack</a>
+      <a class="btn" href="#top">⬆️ Volver arriba</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+    <div>© <span id="y"></span> StudySprint • Producto digital informativo</div>
+    <div>Contacto: <a href="mailto:tuemail@correo.com" style="color:var(--accent)">tuemail@correo.com</a></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
